@@ -10,13 +10,25 @@ Al ingresar al curso SARLAFT y acceder al bloque Estado de finalización, espec�
 Con el modo de depuración activado en Moodle, se pudo identificar que el problema se originaba por una consulta SQL incorrecta en el archivo:
 
 	blocks/completion_progress/overview.php
-	En la línea 132 del archivo hacia referencia a una columna que no existe (r.capabilite)
+	En la línea 126 del archivo hacia referencia a una columna que no existe (r.capabilite)
 	
-Este campo no existe en la tabla mdl_role, lo cual provocaba que la consulta fallara y Moodle lanzara una excepción de tipo dmlreadexception.
+	// Prepare the roles menu.
+	$sql = "SELECT DISTINCT r.id, r.name, r.shortname, r.archetype, r.sortorder,r.capabilite
+	
+Este campo no existe en la tabla mdl_role o en mdl_role_assignments, lo cual provocaba que la consulta fallara y Moodle lanzara una excepción de tipo dmlreadexception.
 
 
-CAUSA RAIZ
+--> CAUSA RAIZ
 
 El error se debió a un error tipográfico en el código del plugin completion_progress. La consulta intentaba obtener un campo r.capabilite que no forma parte de la estructura de la base de datos estándar de Moodle.
 
-Se verificó que la tabla mdl_role no contiene ninguna columna llamada r.capabilite. Tampoco es un campo requerido para la funcionalidad esperada en esta parte del bloque, por lo que su inclusión parece haber sido un error del desarrollador original del plugin.
+Se verificó que la tabla mdl_role y mdl_role_assignments, no  contienen ninguna columna llamada r.capabilite. Tampoco es un campo requerido para la funcionalidad esperada en esta parte del bloque,parece haber sido un error del desarrollador original del plugin.
+
+-> SOLUCIÓN
+
+Se accedió al archivo afectado y se modificó la línea 126, eliminando la referencia al campo r.capabilite. El código quedó así:
+
+	$sql = "SELECT DISTINCT r.id, r.name, r.shortname, r.archetype, r.sortorder
+	
+Tras realizar el ajuste, la funcionalidad “Vista general de estudiantes” del bloque Estado de finalización carga correctamente sin errores y permite visualizar el estado de finalización del curso para los usuarios inscritos.
+
