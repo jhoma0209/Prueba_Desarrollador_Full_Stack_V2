@@ -1,0 +1,22 @@
+INFORME DE HALLAZGO Y CORRECCIÓN DE ERROR
+
+Al ingresar al curso SARLAFT y acceder al bloque Estado de finalización, específicamente en la opción “Vista general de estudiantes”, el sistema presentó el siguiente error:
+
+	Error al leer de la base de datos
+	Código Error: dmlreadexception
+
+	Este mensaje impedía visualizar el avance de los estudiantes en el curso.
+
+Con el modo de depuración activado en Moodle, se pudo identificar que el problema se originaba por una consulta SQL incorrecta en el archivo:
+
+	blocks/completion_progress/overview.php
+	En la línea 132 del archivo hacia referencia a una columna que no existe (r.capabilite)
+	
+Este campo no existe en la tabla mdl_role, lo cual provocaba que la consulta fallara y Moodle lanzara una excepción de tipo dmlreadexception.
+
+
+CAUSA RAIZ
+
+El error se debió a un error tipográfico en el código del plugin completion_progress. La consulta intentaba obtener un campo r.capabilite que no forma parte de la estructura de la base de datos estándar de Moodle.
+
+Se verificó que la tabla mdl_role no contiene ninguna columna llamada r.capabilite. Tampoco es un campo requerido para la funcionalidad esperada en esta parte del bloque, por lo que su inclusión parece haber sido un error del desarrollador original del plugin.
