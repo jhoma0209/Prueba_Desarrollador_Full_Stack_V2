@@ -1,0 +1,1 @@
+Un índice compuesto en SQL es un índice que abarca dos o más columnas de una tabla. Mejora el rendimiento de las consultas cuando se usan varias de esas columnas en condiciones como WHERE, JOIN u ORDER BY, ya que permite buscar datos de forma más rápida y evita escaneos innecesarios en la tabla
