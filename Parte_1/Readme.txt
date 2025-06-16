@@ -1,3 +1,5 @@
+Ruta del Proyecto Prueba_Desarrollador_Full_Stack_V2\Parte_1\userstasks
+
 Para ejecutar el proyecto se debe hacer desde la carpeta public, con el sgt comando:
 
 MINGW64 /c/laragon/www/userstasks/public
