@@ -32,3 +32,4 @@ Se accedió al archivo afectado y se modificó la línea 126, eliminando la refe
 	
 Tras realizar el ajuste, la funcionalidad “Vista general de estudiantes” del bloque Estado de finalización carga correctamente sin errores y permite visualizar el estado de finalización del curso para los usuarios inscritos.
 
+Nota: Otra opcion era crear el atributo r.capabilite
