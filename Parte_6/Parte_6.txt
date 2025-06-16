@@ -1,5 +1,5 @@
-TensorFlow.js es una biblioteca de JavaScript desarrollada por Google que permite entrenar y ejecutar modelos de inteligencia artificial directamente en el navegador o en Node.js. Lo interesante es que no necesitas un servidor potente para usarlo, ya que todo el procesamiento ocurre en el dispositivo del usuario.
+TensorFlow.js es una biblioteca de JavaScript desarrollada por Google que permite entrenar y ejecutar modelos de inteligencia artificial directamente en el navegador o en Node.js. No se necesita un servidor potente para usarlo, todo el procesamiento ocurre en el dispositivo del usuario.
 
 Un caso de uso práctico podría ser una aplicación web de edición de fotos que, gracias a TensorFlow.js, aplique filtros inteligentes (como mejorar la calidad de imágenes borrosas) sin necesidad de subir las fotos a un servidor, lo que hace todo más rápido y privado.
 
-Mi idea innovadora sería integrar un asistente virtual personalizado en una plataforma de aprendizaje en línea. Por ejemplo, que use IA para analizar cómo estudia el usuario (qué temas le cuestan más, cuánto tiempo dedica, etc.) y luego genere recomendaciones personalizadas, como ejercicios específicos o resúmenes adaptados a su ritmo. Esto haría el aprendizaje más eficiente y menos frustrante, casi como tener un tutor 24/7.
+Mi idea sería integrar un asistente virtual personalizado en una plataforma de aprendizaje en línea. Por ejemplo, que use IA para analizar cómo estudia el usuario (qué temas le cuestan más, cuánto tiempo dedica, etc.) y luego genere recomendaciones personalizadas.
